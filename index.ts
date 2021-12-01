@@ -39,7 +39,7 @@ app.post("/flowers", async (req: Request, res: Response) => {
 
 app.get("/flowers", async (_: Request, res: Response) => {
   try {
-    const flowers = await Flowers.find();
+    const flowers = await Flowers.findAll();
 
     return res.json(flowers);
   } catch (err) {
@@ -55,7 +55,7 @@ app.get("/flowers/:id", async (req: Request, res: Response) => {
       where: { id },
     });
 
-    return res.json(flower);
+    return res.json([flower]);
   } catch (err) {
     return res.json(err);
   }
